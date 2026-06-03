@@ -1,0 +1,5 @@
+import PhysicsQuestApp from "./components/PhysicsQuestApp";
+
+export default function Home() {
+  return <PhysicsQuestApp />;
+}

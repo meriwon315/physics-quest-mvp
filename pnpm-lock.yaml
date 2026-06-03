@@ -1,0 +1,26 @@
+export type AppScreen = "landing" | "topics" | "game" | "results";
+
+export type Phase = 1 | 2 | 3 | 4;
+export type PhaseStatus = "idle" | "correct" | "wrong" | "complete";
+export type DropZoneId = "formula" | "massValue" | "accelerationValue";
+export type BankId = "formulaBank" | "valueBank";
+export type DroppableId = DropZoneId | BankId;
+export type ValueLocation = "bank" | "massValue" | "accelerationValue";
+
+export type ChoiceOption = {
+  id: string;
+  label: string;
+  isCorrect: boolean;
+};
+
+export type Tile = {
+  id: string;
+  label: string;
+  isCorrect?: boolean;
+};
+
+export type QuestionResult = {
+  xpEarned: number;
+  mistakesMade: number;
+  answerSummary: string;
+};

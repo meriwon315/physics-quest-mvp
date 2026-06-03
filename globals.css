@@ -1,0 +1,52 @@
+import type { SavedProgress } from "../../lib/progress";
+import type { QuestionResult } from "../../types";
+import { GameButton, StatPill } from "../ui";
+
+export function ResultScreen({
+  progress,
+  result,
+  onReplay,
+  onNext,
+  onTopics,
+}: {
+  progress: SavedProgress;
+  result: QuestionResult;
+  onReplay: () => void;
+  onNext: () => void;
+  onTopics: () => void;
+}) {
+  return (
+    <section className="grid gap-5">
+      <div className="rounded-lg border-2 border-[#14213d] bg-[#fff8df] p-5 shadow-[8px_8px_0_#14213d] sm:p-8">
+        <p className="text-sm font-black uppercase text-[#e76f51]">Quest Complete</p>
+        <h1 className="mt-2 text-4xl font-black sm:text-6xl">Result Screen</h1>
+        <p className="mt-3 max-w-2xl text-lg font-bold text-[#536471]">
+          Nice work. You solved Newton&apos;s Second Law by choosing the target, reading the data,
+          picking the formula, and substituting values.
+        </p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-4">
+        <StatPill label="XP Earned" value={result.xpEarned} tone="yellow" />
+        <StatPill label="Mistakes" value={result.mistakesMade} tone="red" />
+        <StatPill label="Total XP" value={progress.totalXp} tone="blue" />
+        <StatPill label="Level" value={progress.currentLevel} tone="green" />
+      </div>
+
+      <div className="rounded-lg border-2 border-[#14213d] bg-white p-5 shadow-[6px_6px_0_#2a9d8f]">
+        <p className="text-sm font-black uppercase text-[#277da1]">Correct answer summary</p>
+        <p className="mt-2 text-2xl font-black">{result.answerSummary}</p>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        <GameButton onClick={onReplay}>Replay</GameButton>
+        <GameButton onClick={onNext} variant="secondary">
+          Next Question
+        </GameButton>
+        <GameButton onClick={onTopics} variant="ghost">
+          Topic Map
+        </GameButton>
+      </div>
+    </section>
+  );
+}
